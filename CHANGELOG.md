@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+1. basic code setup published into pub.dev
