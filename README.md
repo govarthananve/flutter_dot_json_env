@@ -77,3 +77,11 @@ Future<void> main() async {
   String? baz = dotenv.maybeGet('missing_key_value', fallback: null);
 }
 ```
+
+# Prior art
+
+[flutter_dot_json_env]: https://pub.dev/packages/flutter_dot_json_env
+
+- [java-james/flutter_dotenv][] (dart)
+
+# license: [MIT](LICENSE)
