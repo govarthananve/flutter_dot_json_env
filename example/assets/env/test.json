@@ -1,0 +1,5 @@
+{
+  "api_url": "https://api.test.com",
+  "foo": "test foo",
+  "bar": "test bar"
+}

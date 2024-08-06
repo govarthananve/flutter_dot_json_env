@@ -1,8 +1,19 @@
-## 0.0.1
+### 1.0.3
 
-1. basic code setup published into pub.dev
+Minimum Dart SDK version: 3.1.0
 
-## 1.0.1
+Example for handling multiple environment files
 
-1.Updated the README file to include instructions on how to use the package in a Flutter project.
-2.Created a sample project and included the sample code.
+### 1.0.2
+
+Removed unused functions
+
+### 1.0.1
+
+Updated the README file to include instructions on how to use the package in a Flutter project.
+
+Created a sample project and included the sample code.
+
+### 0.0.1
+
+basic code setup published into pub.dev

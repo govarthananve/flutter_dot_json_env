@@ -58,7 +58,87 @@ String varibale_name = dotjsonenv.env['key_value'] ?? 'default fallback value';
 
 ```
 
-## Null safety
+# Useing `--dart-define` to select the environtment JSON file
+
+1.Create a file named `[envFileName].json` with the same object keys as shown in the following example content:
+
+```json
+{
+  "api_url": "https://api.local.dev.com",
+  "foo": "foo",
+  "bar": "bar"
+}
+```
+
+2.Add the environment `JSON` file to your assets bundle in pubspec.yaml. Make sure the path matches the location of the local.json file!
+
+```yml
+assets:
+  - assets/env/local.json
+  - assets/env/dev.json
+  - assets/env/test.json
+  - assets/env/prelive.json
+  - assets/env/live.json
+```
+
+3.Create new class for example `Environment`
+
+```dart
+class Environment {
+  static const env = String.fromEnvironment('ENV');
+
+  String get envFileName {
+    switch (env) {
+      case 'dev': // flutter run --dart-define=ENV=dev
+        return 'assets/env/dev.json';
+      case 'test': // flutter run --dart-define=ENV=test
+        return 'assets/env/test.json';
+      case 'prelive': // flutter run --dart-define=ENV=prelive
+        return 'assets/env/prelive.json';
+      case 'live': // flutter run --dart-define=ENV=live
+        return 'assets/env/live.json';
+      default: // flutter run
+        return 'assets/env/local.json';
+    }
+  }
+
+  static String get environmentName {
+    return env.isNotEmpty ? env : "Environment name not found";
+  }
+
+  static String get apiUrl =>
+      dotjsonenv.get('api_url', fallback: 'api url default fallback value');
+  static String get foo =>
+      dotjsonenv.env['foo'] ?? 'foo default fallback value';
+  static String get bar =>
+      dotjsonenv.env['bar'] ?? 'bar default fallback value';
+}
+
+```
+
+4.Access value from `Environment` throughout the application
+
+```dart
+Future main() async {
+  // await dotjsonenv.load(fileName: "assets/env/local.json"); // load as static json
+  await dotjsonenv.load(fileName: Environment().envFileName);
+  print('appURL::: ${Environment.apiUrl}'); // appURL::: https://api.local.com
+  print('Foo::: ${Environment.foo}'); // Foo::: prelive foo
+  print('Bar::: ${Environment.bar}'); // Bar::: prelive bar
+//...runapp
+}
+```
+
+5. To run the app or while taking build
+
+```dart
+ flutter run --dart-define=ENV=<envFileName>
+ // flutter run --dart-define=ENV=dev
+ flutter build web --dart-define=ENV=<envFileName>
+ // flutter build web --dart-define=ENV=dev
+```
+
+# Null safety
 
 To avoid null-safety checks for variables that are known to exist, there is a `get()` method that
 will throw an exception if the variable is undefined. You can also specify a default fallback
@@ -77,6 +157,14 @@ Future<void> main() async {
   String? baz = dotenv.maybeGet('missing_key_value', fallback: null);
 }
 ```
+
+# Discussion
+
+Use the [issue tracker][tracker] for bug reports and feature requests.
+
+Pull requests are welcome.
+
+[tracker]: https://github.com/govarthananve/flutter_dot_json_env/issues
 
 # Prior art
 

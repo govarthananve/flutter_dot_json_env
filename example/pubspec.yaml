@@ -28,3 +28,6 @@ flutter:
   assets:
     - assets/env/local.json
     - assets/env/dev.json
+    - assets/env/test.json
+    - assets/env/prelive.json
+    - assets/env/live.json

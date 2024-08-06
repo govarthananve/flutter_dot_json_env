@@ -1,10 +1,10 @@
 name: flutter_dot_json_env
 description: "Easily configure any flutter application with global variables using a `local.json` file."
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/govarthananve/flutter_dot_json_env
 
 environment:
-  sdk: ">=3.4.4 <4.0.0"
+  sdk: ">=3.1.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
