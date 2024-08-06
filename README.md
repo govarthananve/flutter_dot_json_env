@@ -129,7 +129,7 @@ Future main() async {
 }
 ```
 
-5. To run the app or while taking build
+5. To run the app or during the build process
 
 ```dart
  flutter run --dart-define=ENV=<envFileName>
