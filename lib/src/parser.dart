@@ -58,14 +58,4 @@ class Parser {
     // Not applicable for JSON data
     return line;
   }
-
-  bool _isValid(String s) {
-    // Validation is different for JSON; typically, this is not needed
-    return true;
-  }
-
-  bool _has(Map<String, String?> map, String key) {
-    // Standard map operations are used for JSON data
-    return map.containsKey(key) && map[key] != null;
-  }
 }
