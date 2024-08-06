@@ -58,7 +58,7 @@ String varibale_name = dotjsonenv.env['key_value'] ?? 'default fallback value';
 
 ```
 
-# Useing `--dart-define` to select the environtment JSON file
+# Using `--dart-define` to select the environtment JSON file
 
 1.Create a file named `[envFileName].json` with the same object keys as shown in the following example content:
 
